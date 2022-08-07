@@ -1,0 +1,136 @@
+from
+--------------------
+Array.from("SUSHANT") //["S","U","S","H","A","N","T"]
+Array.from([1,2,3,4,5]) // [1,2,3,4,5]
+Array.from([1,2,3,4,5], n => n * 2) //[2,4,6,8,10]
+Array.from([1,2,3,4,5], (x, i) => x + i)// [1, 3, 5, 7, 9]
+
+isArray
+----------------------
+Array.isArray([1]);
+
+of
+----------------------
+The Array.of() method creates a new Array instance from a variable number 
+of arguments, regardless of number or type of the arguments.
+
+Array.of(7); // [7]
+Array(7); // array of 7 empty slots
+
+Array.of(1, 2, 3); // [1, 2, 3]
+Array(1, 2, 3);    // [1, 2, 3]
+
+
+length
+--------------------------------
+const clothing = ['shoes', 'shirts', 'socks', 'sweaters'];
+
+console.log(clothing.length);
+
+at
+-------------------------
+The at() method takes an integer value and returns the item at that index,
+allowing for positive and negative integers. Negative integers count back 
+from the last item in the array.
+
+array[array.length-1] for the last item, you can call array.at(-1).
+
+concat
+-------------------------
+The concat() method is used to merge two or more arrays. This method does 
+not change the existing arrays, but instead returns a new array.
+
+concat()
+concat(value0)
+concat(value0, value1)
+concat(value0, value1, /* … ,*/ valueN)
+
+const array1 = ['a', 'b', 'c'];
+const array2 = ['d', 'e', 'f'];
+const array3 = array1.concat(array2);
+
+console.log(array3);
+// expected output: Array ["a", "b", "c", "d", "e", "f"]
+
+const num1 = [1, 2, 3];
+const num2 = [4, 5, 6];
+const num3 = [7, 8, 9];
+
+const numbers = num1.concat(num2, num3);
+
+console.log(numbers);
+// results in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+const array1 = ['a', 'b', 'c', 'd', 'e'];
+
+copyWithin
+-------------------------
+The copyWithin() method shallow copies part of an array to another location
+in the same array and returns it without modifying its length.
+
+
+copyWithin(target)
+copyWithin(target, start)
+copyWithin(target, start, end)
+
+target
+Zero-based index at which to copy the sequence to. If negative, target will be counted from the end.
+
+If target is at or greater than arr.length, nothing will be copied. If 
+target is positioned after start, the copied sequence will be trimmed to 
+fit arr.length.
+
+start Optional
+Zero-based index at which to start copying elements from. If negative, 
+start will be counted from the end.
+
+If start is omitted, copyWithin will copy from index 0.
+
+end Optional
+Zero-based index at which to end copying elements from. copyWithin copies 
+up to but not including end. If negative, end will be counted from the end.
+
+If end is omitted, copyWithin will copy until the last index 
+(default to arr.length).
+
+
+const array1 = ['a', 'b', 'c', 'd', 'e'];
+// copy to index 0 the element at index 3
+console.log(array1.copyWithin(0, 3, 4));
+// expected output: Array ["d", "b", "c", "d", "e"]
+
+// copy to index 1 all elements from index 3 to the end
+console.log(array1.copyWithin(1, 3));
+// expected output: Array ["d", "d", "e", "d", "e"]
+
+console.log([1, 2, 3, 4, 5].copyWithin(-2));
+// [1, 2, 3, 1, 2]
+
+console.log([1, 2, 3, 4, 5].copyWithin(0, 3));
+// [4, 5, 3, 4, 5]
+
+console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 4));
+// [4, 2, 3, 4, 5]
+
+console.log([1, 2, 3, 4, 5].copyWithin(-2, -3, -1));
+// [1, 2, 3, 3, 4]
+
+console.log([].copyWithin.call({length: 5, 3: 1}, 0, 3));
+// {0: 1, 3: 1, length: 5}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
