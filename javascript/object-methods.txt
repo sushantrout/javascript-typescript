@@ -1,0 +1,60 @@
+The Object constructor's behavior depends on the input's type.
+
+If the value is null or undefined, it will create and return an empty object.
+If the value is an object already, it will return the value.
+Otherwise, it will return an object of a Type that corresponds to the given value.
+When called in a non-constructor context, Object behaves identically to new Object().
+
+delete (Operator)
+---------------------------
+const Employee = {
+  firstname: 'John',
+  lastname: 'Doe'
+};
+
+console.log(Employee.firstname);
+// expected output: "John"
+
+delete Employee.firstname;
+
+console.log(Employee.firstname);
+// expected output: undefined
+
+var, let, and const create non-configurable properties that cannot be deleted with the delete operator.
+
+
+assign()
+----------------------
+The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the modified target object.
+Object.assign(target, ...sources)
+
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const returnedTarget = Object.assign(target, source);
+
+console.log(target);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+console.log(returnedTarget);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+
+create()
+--------------------
+The Object.create() method creates a new object, using an existing object as the prototype of the newly created object.
+
+const person = {
+  isHuman: false,
+  printIntroduction: function() {
+    console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+  }
+};
+
+const me = Object.create(person);
+
+me.name = 'Matthew'; // "name" is a property set on "me", but not on "person"
+me.isHuman = true; // inherited properties can be overwritten
+
+me.printIntroduction();
+// expected output: "My name is Matthew. Am I human? true"
