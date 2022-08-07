@@ -121,16 +121,206 @@ console.log([].copyWithin.call({length: 5, 3: 1}, 0, 3));
 
 
 
+entries()
+-----------------
+The entries() method returns a new Array Iterator object that contains the key/value pairs for each index in 
+the array.
 
 
+const array1 = ['a', 'b', 'c'];
+
+const iterator1 = array1.entries();
+
+console.log(iterator1.next().value);
+// expected output: Array [0, "a"]
+
+console.log(iterator1.next().value);
+// expected output: Array [1, "b"]
+
+const a = ["a", "b", "c"];
+
+for (const [index, element] of a.entries()) {
+  console.log(index, element);
+}
+
+every()
+------------------
+The every() method tests whether all elements in the array pass the test implemented by the provided function. 
+It returns a Boolean value.
 
 
+const isBelowThreshold = (currentValue) => currentValue < 40;
+const array1 = [1, 30, 39, 29, 10, 13];
+console.log(array1.every(isBelowThreshold));
+// expected output: true
 
 
+const isSubset = (array1, array2) => array2.every((element) => array1.includes(element));
+
+console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 7, 6])); // true
+console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 8, 7])); // false
+
+fill()
+------------------------
+The fill() method changes all elements in an array to a static value, from a start index (default 0) to an end
+ index (default array.length). It returns the modified array.
+
+const array1 = [1, 2, 3, 4];
+
+// fill with 0 from position 2 until position 4
+console.log(array1.fill(0, 2, 4));
+// expected output: [1, 2, 0, 0]
+
+// fill with 5 from position 1
+console.log(array1.fill(5, 1));
+// expected output: [1, 5, 5, 5]
+
+console.log(array1.fill(6));
+// expected output: [6, 6, 6, 6]
+
+fill()
+-----------------------
+The filter() method creates a shallow copy of a portion of a given array, filtered down to just the elements from 
+the given array that pass the test implemented by the provided function.
+
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+const result = words.filter(word => word.length > 6);
+
+console.log(result);
+// expected output: Array ["exuberant", "destruction", "present"]
 
 
+find()/ findIndex()/ findLast()/ findLastIndexOf()
+--------------------------------------------------
+
+The find() method returns the first element in the provided array that satisfies the provided testing function.
+ If no values satisfy the testing function, undefined is returned.
 
 
+const array1 = [5, 12, 8, 130, 44];
+
+const found = array1.find(element => element > 10);
+
+console.log(found);
 
 
+flat()
+------------------
+The flat() method creates a new array with all sub-array elements concatenated into it recursively up 
+to the specified depth.
+
+
+flat()
+flat(depth)
+
+const arr1 = [0, 1, 2, [3, 4]];
+
+console.log(arr1.flat());
+// expected output: [0, 1, 2, 3, 4]
+
+const arr2 = [0, 1, 2, [[[3, 4]]]];
+
+console.log(arr2.flat(2));
+// expected output: [0, 1, 2, [3, 4]]
+
+flatMap
+-------------
+The flatMap() method returns a new array formed by applying a given callback function to each element of the array,
+ and then flattening the result by one level. It is identical to a map() followed by a flat() of depth 1 
+(arr.map(...args).flat()), but slightly more efficient than calling those two methods separately.
+
+const arr1 = [1, 2, [3], [4, 5], 6, []];
+
+const flattened = arr1.flatMap(num => num);
+
+console.log(flattened);
+// expected output: Array [1, 2, 3, 4, 5, 6]
+
+
+forEach
+------------------
+The forEach() method executes a provided function once for each array element.
+
+const array1 = ['a', 'b', 'c'];
+array1.forEach(element => console.log(element));
+
+// expected output: "a"
+// expected output: "b"
+// expected output: "c"
+
+group()
+-----------------------
+The group() method groups the elements of the calling array according to the string values returned by a 
+provided testing function. The returned object has separate properties for each group, containing arrays with 
+the elements in the group.
+
+const inventory = [
+  { name: 'asparagus', type: 'vegetables', quantity: 5 },
+  { name: 'bananas',  type: 'fruit', quantity: 0 },
+  { name: 'goat', type: 'meat', quantity: 23 },
+  { name: 'cherries', type: 'fruit', quantity: 5 },
+  { name: 'fish', type: 'meat', quantity: 22 }
+];
+
+const result = inventory.group(({ type }) => type);
+
+groupToMap()
+-------------------------
+The groupToMap() method groups the elements of the calling array using the values returned by a provided testing 
+function. The final returned Map uses the unique values from the test function as keys, which can be used to get 
+the array of elements in each group.
+
+const result = inventory.groupToMap(({ quantity }) => quantity < 6 ? restock : sufficient);
+
+includes()
+-------------------------
+The includes() method determines whether an array includes a certain value among its entries, returning true or 
+false as appropriate.
+
+
+includes(searchElement)
+includes(searchElement, fromIndex)
+
+const array1 = [1, 2, 3];
+
+console.log(array1.includes(2));
+// expected output: true
+
+const pets = ['cat', 'dog', 'bat'];
+
+console.log(pets.includes('cat'));
+// expected output: true
+
+console.log(pets.includes('at'));
+// expected output: false
+
+
+indexOf()
+-------------------------
+The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it 
+is not present.
+
+const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+console.log(beasts.indexOf('bison'));
+// expected output: 1
+
+join()
+---------------------------
+The join() method creates and returns a new string by concatenating all of the elements in an array 
+(or an array-like object), separated by commas or a specified separator string. If the array has only one item,
+ then that item will be returned without using the separator.
+
+join()
+join(separator)
+
+const elements = ['Fire', 'Air', 'Water'];
+console.log(elements.join());
+// expected output: "Fire,Air,Water"
+
+console.log(elements.join(''));
+// expected output: "FireAirWater"
+
+console.log(elements.join('-'));
+// expected output: "Fire-Air-Water"
 
