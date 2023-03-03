@@ -431,7 +431,23 @@ const sumWithInitial = array1.reduce(
 console.log(sumWithInitial);
 // expected output: 10
 
-<b>OR</b>
+#OR Real time example
+let data = {
+    "a" : {
+        "b": {
+            "c": {
+                "name": "sushant kumar rout"
+            }
+        }
+    }
+}
+
+const properties = ['a', 'b', 'c', , 'name'];
+
+const ans = properties.reduce((value, key) => {
+    return value[key]
+}, data);
+console.log(ans); //sushant kumar rout
 
 
 
