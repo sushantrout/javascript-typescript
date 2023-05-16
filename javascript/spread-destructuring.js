@@ -8,5 +8,7 @@ console.log(employee);
 
 let { employeeName } = employee; //destructuring
 
-let newEmployee = {...employee, age: '290'}
+let newEmployee = {...employee, age: '290'} //spreading op
 console.log(newEmployee);
+
+
